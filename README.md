@@ -1,2 +1,2 @@
-# DeCurvatura
+# Curvatura
 Tensor Calculus in Mathematica
