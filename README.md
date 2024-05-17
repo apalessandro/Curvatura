@@ -24,33 +24,34 @@ g = {
 {0,0,0,a[t]^2r^2 Sin[\[Theta]]^2}
 }
 ```
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/400158ae-f3e3-4ba4-b577-bb6394a6d2bc)
+
 and the spherical coordinates
 ```Mathematica
 x = {t,r,\[Theta],\[Phi]}
 ```
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/b27f0e21-9933-4504-8b10-f489e1ba14f4)
 
 We can now compute the connection coefficients by using the pre-defined function Connection[g,x]:
 ```Mathematica
 Connection[g,x]
 ```
-![image](https://github.com/apalessandro/Curvatura/assets/48097299/9d5df438-d71d-4874-8d0e-0ca5240a907f)
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/3072f400-abe5-4821-ba7d-cac63f260097)
 
 We do the same for the Ricci tensor
 ```Mathematica
 RicciTensor[g,x]
 ```
-![image](https://github.com/apalessandro/Curvatura/assets/48097299/006ac216-a150-49ed-986b-4961d94dc4a9)
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/a97b734b-cd5f-4b56-802a-99707542add1)
+
 the Ricci scalar
 ```Mathematica
 RicciScalar[g,x]
 ```
-![image](https://github.com/apalessandro/Curvatura/assets/48097299/aeee824a-f141-4ecb-8f0c-600169e42486)
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/bd9325c4-40df-49e1-8cc3-1b6a4202ea28)
 
 and the Einstein tensor
 ```Mathematica
 EinsteinTensor[g,x]
 ```
-![image](https://github.com/apalessandro/Curvatura/assets/48097299/04595de1-308e-4c5c-880a-9c23789a1722)
-
-
-
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/50387ad2-60cc-464c-acc1-d73f78d52dc3)
