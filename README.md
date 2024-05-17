@@ -15,7 +15,7 @@ We first load the Einstein Package:
 Needs["Einstein`"]
 ```
 
-Then, we define the metric 
+Then, we define the FRW metric 
 ```Mathematica
 g = {
 {-1,0,0,0},
