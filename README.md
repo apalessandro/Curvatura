@@ -1,2 +1,2 @@
 # Curvatura
-Tensor Calculus in Mathematica
+A Tensor Calculus Mathematica package for calculations in General Relativity.
