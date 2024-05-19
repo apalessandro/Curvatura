@@ -1,5 +1,5 @@
 # Curvatura
-A Tensor Calculus Mathematica package for calculations in General Relativity.
+A Tensor Calculus Mathematica repository for calculations in General Relativity.
 
 As an example, let's try to calculate the Ricci and Einstein tensors in an expanding universe.
 
