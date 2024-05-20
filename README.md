@@ -1,9 +1,9 @@
 # Curvatura
 A Mathematica library for tensor calculus and dynamical evolution in General Relativity.
 
-As an example, let's try to calculate the Ricci and Einstein tensors in an expanding universe.
+As an example, let's try to calculate the curvature tensors in an expanding universe.
 
-In order to compute the curvature tensors, we need to define a metric and a set of coordinates. 
+In order to do that, we need to define a metric and a set of coordinates. 
 
 An isotropic and homogeneous universe is described by the Friedmann-Robertson-Walker metric. In spherical coordinates, this is
 ```math
@@ -15,7 +15,7 @@ We first load the Einstein Package:
 Needs["Einstein`"]
 ```
 
-Then, we define the FRW metric 
+Then, we define the FRW metric as a (4,4) tensor
 ```Mathematica
 g = {
 {-1,0,0,0},
@@ -26,13 +26,13 @@ g = {
 ```
 ![image](https://github.com/apalessandro/Curvatura/assets/48097299/400158ae-f3e3-4ba4-b577-bb6394a6d2bc)
 
-and the spherical coordinates
+and the spherical coordinates the metric is written in
 ```Mathematica
 x = {t,r,\[Theta],\[Phi]}
 ```
 ![image](https://github.com/apalessandro/Curvatura/assets/48097299/b27f0e21-9933-4504-8b10-f489e1ba14f4)
 
-We can now compute the connection coefficients by using the pre-defined function Connection[g,x]:
+We can now compute the connection coefficients (Christoffel symbols) using the pre-defined function Connection[g,x]:
 ```Mathematica
 Connection[g,x]
 ```
