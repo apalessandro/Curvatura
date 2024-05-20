@@ -55,3 +55,10 @@ and the Einstein tensor
 EinsteinTensor[g,x]
 ```
 ![image](https://github.com/apalessandro/Curvatura/assets/48097299/50387ad2-60cc-464c-acc1-d73f78d52dc3)
+
+We can also check explicitly that the contraction of the Riemann curvature tensor gives the Ricci tensor ($R_{ab} = R^c_{acb}$):
+```Mathematica
+TensorContract[RiemannTensor[g,x],{1,3}]==RicciTensor[g,x]//FullSimplify
+```
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/87a7a13f-dda7-42ab-ae1e-f890f792d173)
+
