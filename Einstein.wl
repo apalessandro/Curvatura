@@ -1,10 +1,11 @@
 BeginPackage["Einstein`"]
 
-Connection::usage = "Connection[g,x] returns the Christoffel symbols corresponding to the metric g and coordinates x";
-RiemannTensor::usage = "RiemannTensor[g,x] returns the Riemann Tensor corresponding to the metric g and coordinates x";
-RicciTensor::usage = "RicciTensor[g,x] returns the Ricci Tensor corresponding to the metric g and coordinates x";
-RicciScalar::usage = "RicciScalar[g,x] returns the Ricci Scalar corresponding to the metric g and coordinates x";
-EinsteinTensor::usage = "EinsteinTensor[g,x] returns the Einstein Tensor corresponding to the metric g and coordinates x";
+Connection::usage = "Connection[g,x] returns the Christoffel symbols for the metric g written in coordinates x";
+RiemannTensor::usage = "RiemannTensor[g,x] returns the Riemann Tensor for the metric g written in coordinates x";
+RicciTensor::usage = "RicciTensor[g,x] returns the Ricci Tensor for the metric g written in coordinates x";
+RicciScalar::usage = "RicciScalar[g,x] returns the Ricci Scalar for the metric g written in coordinates x";
+EinsteinTensor::usage = "EinsteinTensor[g,x] returns the Einstein Tensor for the metric g written in coordinates x";
+WeylTensor::usage = "WeylTensor[g,x] returns the Weyl curvature Tensor for the metric g written in coordinates x"
 
 Begin["`Private`"]
 
@@ -26,16 +27,13 @@ RicciTensor[g_,x_] := (TensorContract[TensorTranspose[DC[g,x],{1,2,3,4}],{1,4}]
 + TensorContract[TensorTranspose[CC[g,x],{1,2,3,4,5,6}],{{1,5},{4,6}}]
 - TensorContract[TensorTranspose[CC[g,x],{1,2,6,4,3,5}],{{1,5},{4,6}}])//FullSimplify;
 
-Ricci[g_,x_] := (TensorContract[TensorTranspose[DC[g,x],{1,2,3,4}],{1,4}]
-- TensorContract[TensorTranspose[DC[g,x],{1,2,4,3}],{1,4}]
-+ TensorContract[TensorTranspose[CC[g,x],{1,2,3,4,5,6}],{{1,5},{4,6}}]
-- TensorContract[TensorTranspose[CC[g,x],{1,2,6,4,3,5}],{{1,5},{4,6}}])//FullSimplify;
+RicciScalar[g_,x_] := TensorContract[TensorProduct[Inverse[g], RicciTensor[g,x]],{{1,3},{2,4}}]//FullSimplify;
 
-RicciScalar[g_,x_] := TensorContract[TensorProduct[Inverse[g], Ricci[g,x]],{{1,3},{2,4}}]//FullSimplify;
+EinsteinTensor[g_,x_] := (RicciTensor[g,x] - 1/2 g RicciScalar[g,x])//FullSimplify;
 
-R[g_, x_] := TensorContract[TensorProduct[Inverse[g], Ricci[g,x]],{{1,3},{2,4}}]//FullSimplify;
-
-EinsteinTensor[g_,x_] := (Ricci[g,x] - 1/2 g R[g,x])//FullSimplify;
+WeylTensor[g_,x_] := (TensorContract[TensorProduct[g,RiemannTensor[g,x]],{2,3}]
++1/2(TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,4,2,3}]-TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,3,2,4}]+TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,3,1,4}]-TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,4,1,3}])
++1/6*RicciScalar[g,x]*(TensorTranspose[TensorProduct[g,g],{1,3,2,4}]-TensorTranspose[TensorProduct[g,g],{1,4,2,3}]))//FullSimplify
 
 End[]
 EndPackage[]
