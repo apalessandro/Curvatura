@@ -64,9 +64,9 @@ TensorContract[RiemannTensor[g,x],{1,3}]==RicciTensor[g,x]//FullSimplify
 
 The Weyl curvature tensor vanishes identically in any conformally flat metric, and we can check this explicitly for FRW by using the relevant function:
 ```Mathematica
-WeylTensor[g,x]
+WeylTensor[g,x] == ConstantArray[0,{4,4,4,4}]//FullSimplify
 ```
-![image](https://github.com/apalessandro/Curvatura/assets/48097299/8f23ab11-7adc-4f55-9da8-a7182f243622)
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/9ada3762-575e-4a9b-bc33-1b5e6327e9c4)
 
 We can also calculate the Kretschmann scalar for the FRW metric:
 ```Mathematica
