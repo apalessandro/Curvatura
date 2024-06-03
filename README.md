@@ -67,3 +67,9 @@ The Weyl curvature tensor vanishes identically in any conformally flat metric, a
 WeylTensor[g,x]
 ```
 ![image](https://github.com/apalessandro/Curvatura/assets/48097299/8f23ab11-7adc-4f55-9da8-a7182f243622)
+
+We can also calculate the Kretschmann scalar for the FRW metric:
+```Mathematica
+KretschmannScalar[g,x]
+```
+![image](https://github.com/apalessandro/Curvatura/assets/48097299/0e2740ee-1877-4a30-95e7-89e1d6450d9c)
