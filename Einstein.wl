@@ -5,7 +5,8 @@ RiemannTensor::usage = "RiemannTensor[g,x] returns the Riemann Tensor for the me
 RicciTensor::usage = "RicciTensor[g,x] returns the Ricci Tensor for the metric g written in coordinates x";
 RicciScalar::usage = "RicciScalar[g,x] returns the Ricci Scalar for the metric g written in coordinates x";
 EinsteinTensor::usage = "EinsteinTensor[g,x] returns the Einstein Tensor for the metric g written in coordinates x";
-WeylTensor::usage = "WeylTensor[g,x] returns the Weyl curvature Tensor for the metric g written in coordinates x"
+WeylTensor::usage = "WeylTensor[g,x] returns the Weyl curvature Tensor for the metric g written in coordinates x";
+KretschmannScalar::usage = "KretschmannScalar[g,x] returns the Kretschmann Scalar for the metric g written in coordinates x";
 
 Begin["`Private`"]
 
@@ -31,9 +32,16 @@ RicciScalar[g_,x_] := TensorContract[TensorProduct[Inverse[g], RicciTensor[g,x]]
 
 EinsteinTensor[g_,x_] := (RicciTensor[g,x] - 1/2 g RicciScalar[g,x])//FullSimplify;
 
-WeylTensor[g_,x_] := (TensorContract[TensorProduct[g,RiemannTensor[g,x]],{2,3}]
-+1/2(TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,4,2,3}]-TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,3,2,4}]+TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,3,1,4}]-TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,4,1,3}])
-+1/6*RicciScalar[g,x]*(TensorTranspose[TensorProduct[g,g],{1,3,2,4}]-TensorTranspose[TensorProduct[g,g],{1,4,2,3}]))//FullSimplify
+WeylTensor[g_,x_] := (TensorContract[TensorProduct[g,RiemannTensor[g,x]],{1,3}]
++1/2*(TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,4,2,3}] - TensorTranspose[TensorProduct[RicciTensor[g,x],g],{1,3,2,4}] + TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,3,1,4}] -TensorTranspose[TensorProduct[RicciTensor[g,x],g],{2,4,1,3}])
++1/6*RicciScalar[g,x]*(TensorTranspose[TensorProduct[g,g],{1,3,2,4}] - TensorTranspose[TensorProduct[g,g],{1,4,2,3}]))//FullSimplify
+
+KretschmannScalar[g_,x_] := TensorContract[
+TensorProduct[
+TensorContract[TensorProduct[g,RiemannTensor[g,x]],{1,3}],
+TensorContract[TensorProduct[RiemannTensor[g,x],Inverse[g],Inverse[g],Inverse[g]],{{2,5},{3,7},{4,9}}]
+]
+,{{1,5},{2,6},{3,7},{4,8}}]//FullSimplify
 
 End[]
 EndPackage[]
