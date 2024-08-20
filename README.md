@@ -10,9 +10,9 @@ An isotropic and homogeneous universe is described by the Friedmann-Robertson-Wa
 ds^2 = -dt^2 + a^2(t)\left[\frac{dr^2}{1-kr^2} + r^2 (d\theta^2 + \sin^2\theta d\phi^2) \right]
 ```
 
-We first load the Einstein Package:
+We first load the Curvatura Package:
 ```Mathematica
-Needs["Einstein`"]
+Needs["Curvatura`"]
 ```
 
 Then, we define the FRW metric as a (4,4) tensor
