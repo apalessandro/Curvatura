@@ -1,4 +1,4 @@
-BeginPackage["Einstein`"]
+BeginPackage["Curvatura`"]
 
 Connection::usage = "Connection[g,x] returns the Christoffel symbols for the metric g written in coordinates x";
 RiemannTensor::usage = "RiemannTensor[g,x] returns the Riemann Tensor for the metric g written in coordinates x";
