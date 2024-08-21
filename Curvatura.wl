@@ -8,6 +8,7 @@ EinsteinTensor::usage = "EinsteinTensor[g,x] returns the Einstein Tensor for the
 WeylTensor::usage = "WeylTensor[g,x] returns the Weyl curvature Tensor for the metric g written in coordinates x";
 KretschmannScalar::usage = "KretschmannScalar[g,x] returns the Kretschmann Scalar for the metric g written in coordinates x";
 Geodesic::usage = "Geodesic[s,g,x] returns the geodesic equation for a test mass of proper time s in a curved spacetime described by the metric g written in coordinates x";
+Singularity::usage = "Singularity[g,x] returns the singular points of the spacetime described by the metric g written in coordinates x";
 
 Begin["`Private`"]
 
@@ -44,7 +45,9 @@ TensorContract[TensorProduct[RiemannTensor[g,x],Inverse[g],Inverse[g],Inverse[g]
 ]
 ,{{1,5},{2,6},{3,7},{4,8}}]//FullSimplify;
 
-Geodesic[s_,g_,x_] := With[{y := {Part[x,1][s], Part[x,2][s], Part[x,3][s], Part[x,4][s]}},D[D[y,s],s] + TensorContract[TensorProduct[Connection[g,x], D[y,s], D[y,s]],{{2,4},{3,5}}]]//FullSimplify;
+Geodesic[s_,g_,x_] := With[{y := {Part[x,1][s], Part[x,2][s], Part[x,3][s], Part[x,4][s]}}, D[D[y,s],s] + TensorContract[TensorProduct[Connection[g,x], D[y,s], D[y,s]],{{2,4},{3,5}}]]//FullSimplify;
+
+Singularity[g_,x_] := DeleteDuplicates[Solve[Denominator[KretschmannScalar[g,x]]==0]];
 
 End[]
 EndPackage[]
