@@ -74,7 +74,7 @@ KretschmannScalar[g,x]
 ```
 ![image](https://github.com/apalessandro/Curvatura/assets/48097299/0e2740ee-1877-4a30-95e7-89e1d6450d9c)
 
-In the FRW spacetime, there is one gravitational singularity at $a(t) = 0$ corresponding to the Big Bang. The Singularity function returns all the singular points of the spacetime described by the metric $g$:
+The Singularity function returns all the singular points of the spacetime described by the metric $g$. In the FRW spacetime, there is one gravitational singularity at $a(t) = 0$, corresponding to the Big Bang:
 ```Mathematica
 Singularity[g,x]
 ```
