@@ -78,4 +78,5 @@ The Singularity function returns all the singular points of the spacetime descri
 ```Mathematica
 Singularity[g,x]
 ```
-![image](https://github.com/user-attachments/assets/e1544953-dd20-4d76-bb49-c8b27141b4cb)
+![image](https://github.com/user-attachments/assets/042c67fd-9adb-487c-9659-a5df83f30876)
+
