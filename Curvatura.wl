@@ -45,9 +45,15 @@ TensorContract[TensorProduct[RiemannTensor[g,x],Inverse[g],Inverse[g],Inverse[g]
 ]
 ,{{1,5},{2,6},{3,7},{4,8}}]//FullSimplify;
 
-Geodesic[s_,g_,x_] := With[{y := {Part[x,1][s], Part[x,2][s], Part[x,3][s], Part[x,4][s]}}, D[D[y,s],s] + TensorContract[TensorProduct[Connection[g,x], D[y,s], D[y,s]],{{2,4},{3,5}}]]//FullSimplify;
+Geodesic[s_,g_,x_] := With[
+{y := {Part[x,1][s], Part[x,2][s], Part[x,3][s], Part[x,4][s]}}, 
+D[D[y,s],s] + TensorContract[TensorProduct[Connection[g,x], D[y,s], D[y,s]],{{2,4},{3,5}}]]//FullSimplify;
 
-Singularity[g_,x_] := DeleteDuplicates[Solve[Denominator[KretschmannScalar[g,x]]==0]];
+Singularity[g_,x_] := Quiet[
+Check[
+Reduce[Denominator[KretschmannScalar[g,x]]==0, x, Reals], 
+Reduce[Denominator[KretschmannScalar[g,x]]==0, Reals]
+]];
 
 End[]
 EndPackage[]
